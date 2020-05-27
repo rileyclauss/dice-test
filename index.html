@@ -4,6 +4,7 @@
     <title>Dice Roll Tester</title>
     <link rel="stylesheet" href="css.css">
     <script type="text/javascript" src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   </head>
   <body onload="init()">
     <h1>DnD Dice Tester</h1>
@@ -41,7 +42,7 @@
       </div>
     </div>
     <div id="display">
-      <table id="trackChart">
+      <table id="trackTable">
         <tr>
           <th>Value</th>
           <th>Rolled</th>
@@ -127,6 +128,34 @@
           <td id="chart20">0</td>
         </tr>
       </table>
+      <canvas id="trackChart" width="400" height="400"></canvas>
     </div>
+    <script>
+      var ctx = document.getElementById("trackChart").getContext('2d');
+      var trackChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['1', '2', '3', '4', '5', '6','7','8','9','10','11','12','13','14','15','16','17','18','19','20' ],
+          datasets: [{
+            label: '# of Rolls',
+            data: rolls,
+            backgroundColor:[
+              'rgba(255,99,132,0.2)'
+            ],
+            borderWidth:1
+          }]
+        },
+      options:{
+        scales:{
+          yAxes:[{
+            ticks:{
+              beginAtZero:false
+            }
+          }]
+        }
+      }
+    }
+  );
+    </script>
   </body>
 </html>

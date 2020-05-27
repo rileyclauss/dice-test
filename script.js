@@ -82,4 +82,5 @@ function update(){
   for(var i=0;i<20;i++){
     document.getElementById(`chart${i+1}`).innerHTML = rolls[i];
   }
+  
 }
