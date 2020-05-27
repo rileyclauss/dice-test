@@ -1,5 +1,5 @@
 
-var rolls = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+var rolls = []
 
 function init(){
   document.getElementById("rollBox")
@@ -9,6 +9,7 @@ function init(){
         document.getElementById("rollButton").click();
     }
   });
+  
 }
 
 function generateMenu(){
@@ -32,7 +33,7 @@ function generateMenu(){
         let lb = document.createElement('label');
         lb.for="btn";
         lb.textContent = `Rolled a ${i+1}: `;
-        if (i<10){
+        if (i<9){
           lb.setAttribute('class', 'spacedLb');
 
         }
@@ -42,10 +43,10 @@ function generateMenu(){
         rollBtn.textContent = "+1";
         div.appendChild(lb);
         div.appendChild(rollBtn);
-      if (i<=10) {
+      if (i<10) {
         document.getElementById("buttonMenuL").appendChild(div);
       }
-      if (i>10){
+      if (i>=10){
         document.getElementById("buttonMenuR").appendChild(div);
       }
     }
@@ -53,6 +54,7 @@ function generateMenu(){
 
 function add(i){
   rolls[i] += 1;
+
   update();
 }
 
@@ -82,5 +84,5 @@ function update(){
   for(var i=0;i<20;i++){
     document.getElementById(`chart${i+1}`).innerHTML = rolls[i];
   }
-  
+
 }

@@ -14,10 +14,15 @@ body{
 .sbs{
   float:left;
   padding-right:10px;
+  clear:none;
 }
 #orBox{
   clear:left;
 }
 #display{
   padding-left:400px;
+}
+#trackChart{
+  float:right;
+  position:relative;
 }
