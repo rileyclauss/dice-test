@@ -1,0 +1,23 @@
+body{
+  margin-left: 50px;
+  float:none;
+}
+
+.rollNum{
+  padding-top: 5px;
+
+}
+
+.spacedLb{
+  padding-right:8px;
+}
+.sbs{
+  float:left;
+  padding-right:10px;
+}
+#orBox{
+  clear:left;
+}
+#display{
+  padding-left:400px;
+}

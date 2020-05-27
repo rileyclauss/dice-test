@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Dice Roll Tester</title>
+    <link rel="stylesheet" href="css.css">
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body onload="init()">
+    <h1>DnD Dice Tester</h1>
+    <p>
+      Select which die you'd like to test with the dropdown menu below, then
+      start rolling. Inputting your rolls will automatically populate the graph
+      and the table below, and show an estimate of how "fair" your dice
+      are.
+    </p>
+    <div class="input sbs">
+      <label for="die">Die: </label>
+      <select name="die" id="dieDD">
+        <option value="d04">d4</option>
+        <option value="d06">d6</option>
+        <option value="d08">d8</option>
+        <option value="d10">d10/%</option>
+        <option value="d12">d12</option>
+        <option value="d20">d20</option>
+      </select>
+      <button type="button" id="begin" onClick="generateMenu()">Begin!</button>
+
+      <div id="rollMenu">
+            <div id="buttonMenuL">
+
+            </div>
+            <div id="buttonMenuR">
+
+            </div>
+      </div>
+      <div id="orBox" class="orBox">
+          <p>----------or----------</p>
+          <label for="rollBox">Rolled: </label>
+          <input type="text" id="rollBox" name="rollBox" placeholder="Enter Value" />
+          <button type="button" id="rollButton" onClick="boxAdd()">Enter</button>
+      </div>
+    </div>
+    <div id="display">
+      <table id="trackChart">
+        <tr>
+          <th>Value</th>
+          <th>Rolled</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td id="chart1">0</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td id="chart2">0</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td id="chart3">0</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td id="chart4">0</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td id="chart5">0</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td id="chart6">0</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td id="chart7">0</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td id="chart8">0</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td id="chart9">0</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td id="chart10">0</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td id="chart11">0</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td id="chart12">0</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td id="chart13">0</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td id="chart14">0</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td id="chart15">0</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td id="chart16">0</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td id="chart17">0</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td id="chart18">0</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td id="chart19">0</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td id="chart20">0</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
