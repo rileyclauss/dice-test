@@ -9,7 +9,10 @@ body{
 }
 
 .spacedLb{
-  padding-right:8px;
+  padding-right:18px;
+}
+.spacedSLb{
+  padding-right:15px;
 }
 .sbs{
   float:left;
@@ -25,4 +28,19 @@ body{
 #trackChart{
   float:right;
   position:relative;
+}
+#buttonMenuL{
+  max-width:50%;
+}
+table, th, td{
+  border: 1px solid black;
+  text-align:center;
+  padding:5px;
+}
+
+.floatright{
+  float:right;
+}
+.makeBlue{
+  background-color:blue;
 }
