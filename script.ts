@@ -1,11 +1,8 @@
 
 var rolls = [0]; //Array of which numbers are rolled, rolls[0] is 1 and [19] is 20
 var dieSelected = 0; //initialized variable for which die is selected
-var myChart; //object for chart/manipulation
-var totRolls; //counter for total rolls thrown
-var totRollVal; //total value of all rolls, used for calculating average
-var avgRoll;
-var perfectAvg = 0.5;
+var myChart;
+var totRolls;
 var ctx; //initialize chart
 
 function init(){
@@ -19,12 +16,11 @@ function init(){
         document.getElementById("rollButton").click(); //execute submission
     }
   });
-  ctx = document.getElementById("myChart").getContext('2d');
+  ctx = document.getElementById("myChart").getContext('2d')
   totRolls = 0;
   updateChart(ctx);
   generateMenu();
 }
-
 function updateChart(chrt){
   myChart = new Chart(chrt, {
     type: 'bar', //bar graph
@@ -92,7 +88,6 @@ function updateChart(chrt){
     }
   });
 }
-
 function generateMenu(){ //executed when #begin is pressed
     document.getElementById("begin").innerHTML="Restart"; //change to Restart
     rolls=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]; //initialize rolls, as we are restarting
@@ -104,10 +99,6 @@ function generateMenu(){ //executed when #begin is pressed
     dieSelected -= 1;
 
     totRolls = 0; //reset total number of rolls
-    totRollVal = 0;
-    avgRoll = 0;
-    perfectAvg = (((dieSelected + 1)/2)+(1/2))
-    document.getElementById('perfectAvg').innerHTML=perfectAvg;
 
     document.getElementById("buttonMenuL").innerHTML=""; //clear left half of buttons
     document.getElementById("buttonMenuR").innerHTML=""; //clear right half of buttons
@@ -130,10 +121,6 @@ function generateMenu(){ //executed when #begin is pressed
         let lb = document.createElement('label'); //new label
         lb.for="btn"; //assign label to button
         lb.textContent = `Rolled a ${i+1}: `;
-        if (i+1 === 8 || i+1 === 11 || i+1 === 18){
-          lb.textContent = `Rolled an ${i+1}: `;
-
-        }
 
         if (i<9){ //if it is a roll betwwen 1 and 9,
           lb.setAttribute('class', 'spacedLb'); //add a medium space after the label
@@ -196,8 +183,6 @@ function boxAdd(){ //called when enter is hit while rollBox is focused
 function add(i){ //called when button is clicked or textbox has enter hit
   rolls[i] += 1; //add 1 to corresponding roll
   totRolls += 1; //add 1 to total rolls
-  totRollVal += (i+1);
-  avgRoll = totRollVal/totRolls;
   update(); //called to update chart and table
 }
 
@@ -207,8 +192,5 @@ function update(){
   }
   document.getElementById('cellTotal').innerHTML = totRolls;
   document.getElementById('totRollsStat').innerHTML = totRolls;
-  document.getElementById('totRollsCalcStat').innerHTML = totRolls;
-  document.getElementById('totRollValStat').innerHTML = totRollVal;
-  document.getElementById('avgRollStat').innerHTML = avgRoll;
   updateChart(ctx);
 }

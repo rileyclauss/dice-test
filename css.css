@@ -37,7 +37,9 @@ table, th, td{
   text-align:center;
   padding:5px;
 }
-
+#statsBox{
+  border: 2px, solid, black;
+}
 .floatright{
   float:right;
 }

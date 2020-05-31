@@ -64,8 +64,18 @@
         </tr>
       </table>
       <canvas id="myChart" style="max-width: 1200px;"></canvas>
-    <script>
-
-    </script>
+    </div>
+    <div id="statsBox">
+      <div id="leftStats">
+        <p>Total Rolls: <span id="totRollsStat">0</span></span></p>
+        <p>Average Roll: <span id="totRollValStat">0</span>/<span id="totRollsCalcStat">0</span>=<span id="avgRollStat">0</span> <span style="padding-left:20px;">(Perfect average is <span id="perfectAvg">0</span> )</span></p>
+        <p>Standard Deviation: <span id="stdDevStat">0</span></p>
+        <p>Pearson's Value: <span id="pearsonStat">0</span></p>
+      </div>
+    </div>
+    <p>Please note that statistically, some fair dice will appear unfair, and
+    some unfair dice will appear fair. This tool should only (and can only)
+    be used as an aproximation. More information can be found
+    <a href="https://en.wikipedia.org/wiki/Pearson's_chi-squared_test#Fairness_of_dice">here.</a></p>
   </body>
 </html>
