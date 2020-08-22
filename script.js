@@ -25,9 +25,9 @@ function init(){
   generateMenu();
 }
 
-function updateChart(chrt){
+/*function updateChart(chrt){
   myChart = new Chart(chrt, {
-    type: 'bar', //bar graph
+    type: 'pie', //bar graph
     data: {
       labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9","10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"],
       //labels along the x axis
@@ -92,6 +92,15 @@ function updateChart(chrt){
     }
   });
 }
+*/
+
+function updateChart(chrt){
+  var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: rolls,
+    options: null
+});
+}
 
 function generateMenu(){ //executed when #begin is pressed
     document.getElementById("begin").innerHTML="Restart"; //change to Restart
@@ -102,7 +111,6 @@ function generateMenu(){ //executed when #begin is pressed
 
     dieSelected = Number(dieSelected); //convert to number
     dieSelected -= 1;
-
     totRolls = 0; //reset total number of rolls
     totRollVal = 0;
     avgRoll = 0;
@@ -121,6 +129,17 @@ function generateMenu(){ //executed when #begin is pressed
     for(var i = table.rows.length - 1; i > 0; i--){
         table.deleteRow(i);
     }
+    trackTable.deleteTHead();
+    var header = trackTable.createTHead();
+    var headRow = header.insertRow(0);
+
+    headRow.insertCell(0).innerHTML="Roll";
+    headRow.insertCell(1).innerHTML="Num";
+
+    if (dieSelected >= 10){
+      headRow.insertCell(0).innerHTML="Roll";
+      headRow.insertCell(1).innerHTML="Num";
+    }
     for (var i = 0; i <= dieSelected; i++){ //for loop to create the buttons
 
       let div = document.createElement('div'); //new div as container of button and label
@@ -132,14 +151,13 @@ function generateMenu(){ //executed when #begin is pressed
         lb.textContent = `Rolled a ${i+1}: `;
         if (i+1 === 8 || i+1 === 11 || i+1 === 18){
           lb.textContent = `Rolled an ${i+1}: `;
-
         }
 
         if (i<9){ //if it is a roll betwwen 1 and 9,
           lb.setAttribute('class', 'spacedLb'); //add a medium space after the label
         }
         else{
-          lb.setAttribute('class', 'spacedSLb') //add a small space after the label
+          lb.setAttribute('class', 'spacedSLb'); //add a small space after the label
         }
 
         let rollBtn = document.createElement('button'); //new button
@@ -156,20 +174,74 @@ function generateMenu(){ //executed when #begin is pressed
       if (i>=10){ //if container is for rolls 11-20
         document.getElementById("buttonMenuR").appendChild(div);  //add to right box
       } //leaving it as two ifs for if I want to add a d100, and it works well enough like this
+    }
 
-      row = table.insertRow(i+1);
+    if (dieSelected < 10){
+      for (i = 0; i <= dieSelected; i++){
+        row = table.insertRow(i+1);
+        cell[0] = row.insertCell(0);
+        cell[1] = row.insertCell(1);
+        cell[0].innerHTML = (i+1).toString();
+        cell[1].innerHTML= '0';
+        cell[1].setAttribute('id', `cell${i}`);
+      }
+      row = table.insertRow(dieSelected+2);
       cell[0] = row.insertCell(0);
       cell[1] = row.insertCell(1);
-      cell[0].innerHTML = (i+1).toString();
-      cell[1].innerHTML= '0';
-      cell[1].setAttribute('id', `cell${i}`);
+      cell[0].innerHTML = "tot";
+      cell[1].innerHTML = "0";
+      cell[1].setAttribute('id', 'cellTotal');
     }
-    row = table.insertRow(dieSelected+2);
-    cell[0] = row.insertCell(0);
-    cell[1] = row.insertCell(1);
-    cell[0].innerHTML = "tot";
-    cell[1].innerHTML = "0";
-    cell[1].setAttribute('id', 'cellTotal');
+    else if (dieSelected == 11){
+      for(i = 0; i < 2; i++){
+        row = table.insertRow(i+1);
+        cell[0] = row.insertCell(0); // label for first column
+        cell[1] = row.insertCell(1); //value for first column
+        cell[2] = row.insertCell(2);//label for second column
+        cell[3] = row.insertCell(3);//value for second column
+        cell[0].innerHTML = (i+1).toString();
+        cell[2].innerHTML = (i+11).toString();
+        cell[1].innerHTML = '0';
+        cell[3].innerHTML = '0';
+        cell[1].setAttribute('id', `cell${i}`);
+        cell[3].setAttribute('id', `cell${i+10}`);
+      }
+      for (i = 2; i <= dieSelected - 2; i++){
+        row = table.insertRow(i+1);
+        cell[0] = row.insertCell(0);
+        cell[1] = row.insertCell(1);
+        cell[0].innerHTML = (i+1).toString();
+        cell[1].innerHTML= '0';
+        cell[1].setAttribute('id', `cell${i}`);
+      }
+      row = table.insertRow(dieSelected);
+      cell[0] = row.insertCell(0);
+      cell[1] = row.insertCell(1);
+      cell[0].innerHTML = "tot";
+      cell[1].innerHTML = "0";
+      cell[1].setAttribute('id', 'cellTotal');
+    }
+    else if (dieSelected == 19){
+      for(i = 0; i <= dieSelected - 10; i++){
+        row = table.insertRow(i+1);
+        cell[0] = row.insertCell(0); // label for first column
+        cell[1] = row.insertCell(1); //value for first column
+        cell[2] = row.insertCell(2);//label for second column
+        cell[3] = row.insertCell(3);//value for second column
+        cell[0].innerHTML = (i+1).toString();
+        cell[2].innerHTML = (i+11).toString();
+        cell[1].innerHTML = '0';
+        cell[3].innerHTML = '0';
+        cell[1].setAttribute('id', `cell${i}`);
+        cell[3].setAttribute('id', `cell${i+10}`);
+      }
+      row = table.insertRow(dieSelected-8);
+      cell[0] = row.insertCell(0);
+      cell[1] = row.insertCell(1);
+      cell[0].innerHTML = "tot";
+      cell[1].innerHTML = "0";
+      cell[1].setAttribute('id', 'cellTotal');
+    }
 
     update();
 }

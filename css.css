@@ -25,12 +25,12 @@ body{
 #display{
   padding-left:400px;
 }
-#trackChart{
-  float:right;
-  position:relative;
-}
+
 #buttonMenuL{
   max-width:50%;
+}
+#titleRow th, td{
+  font-weight: bold;
 }
 table, th, td{
   border: 1px solid black;
